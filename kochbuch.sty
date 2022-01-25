@@ -1,22 +1,22 @@
 %
 % -----------------------------------------------------------------------------
-%  Vorlage für Rezepte                                % vim:sw=2:ts=2:syn=tex
+%  Template for Recipes                                 % vim:sw=2:ts=2:syn=tex
 % -----------------------------------------------------------------------------
-%  Benötigte Pakete
+%  used packages
 %
   \usepackage{cmap}
   \usepackage[ngerman]{babel}
-  \usepackage[utf8]{inputenc}
+%  \usepackage[utf8]{inputenc}		% obsolete since 2018
   \usepackage[T1]{fontenc}
-  \usepackage{lmodern}
-  \usepackage{marvosym}
-  \usepackage[dvipsnames]{xcolor}
-  \usepackage{scrlayer-scrpage}
-  \usepackage{graphicx}
-  \usepackage{nicefrac}
-  \usepackage{makeidx}
-  \usepackage{ifthen}
-  \usepackage[
+	\usepackage{sanitize-umlaut}		% sorts ä,ö,ü in index under a,o,u
+	\usepackage{lmodern}						% mor modern font set
+  \usepackage[dvipsnames]{xcolor}	% extended color names
+  \usepackage{scrlayer-scrpage}		% KOMA header and footer	
+  \usepackage{graphicx}						% image package
+  \usepackage{nicefrac}						% nice fractions
+																	% TODO: update to xfrac
+  \usepackage{makeidx}						% create indexes
+  \usepackage[										% creates links for index
     pdfpagelayout=TwoPageRight,
     pdfcreator=PDFLaTeX,
     pdfproducer=MikTeX,
@@ -27,32 +27,53 @@
     linkcolor=BlueViolet]{hyperref}
 %
 % -----------------------------------------------------------------------------
-%  Neue Befehle
+%  New commands
 %
+% Easy fractions
   \newcommand{\halb}{\nicefrac{1}{2}~}
   \newcommand{\einhalb}{\nicefrac{1}{2}~}
   \newcommand{\drittel}{\nicefrac{1}{3}~}
   \newcommand{\viertel}{\nicefrac{1}{4}~}
   \newcommand{\achtel}{\nicefrac{1}{8}~}
   \newcommand{\dreiviertel}{\nicefrac{3}{4}~}
+
+% degrees Celsius
+	% TODO: implement cooking symobls / cooking units
   \newcommand{\celsius}{$^\circ$C~}
+
+% ingredients list environment
+	% \inglist 								--> Zutaten:
+	% \inglist[Ingredients:]	--> Ingredients:
   \newcommand{\inglist}[1][Zutaten:]{\textbf{\textcolor{Mahogany}{ #1}}\\}
+
+% print index always after cleardoublepage
   \newcommand{\showindex}{
     ~\cleardoublepage
     \printindex
   }
+
+% create Chapter w/o numbering add default picture if not specified
   \newcommand{\category}[2][Bilder/Leer.jpg]{%
     \addchap{#2}
     \includegraphics[width=\textwidth]{#1}
     \newpage
   }
+
+% defining step command for cooking instructions
   \newcommand{\steps}{
     \end{minipage}
     \hspace*{0.6cm}
     \begin{minipage}[t]{0.6\textwidth}
       \setlength{\parskip}{2ex plus1ex minus0.5ex}
   }
+
+% ingredient entry
+	% TODO: implement cooking units
   \DeclareRobustCommand*{\ingredient}[1]{ #1\\}
+
+% environment for recipe add unnumbered titel as section
+	% sample usage
+	% \begin{recipe}{Recipe title}{recipe author}
   \newenvironment{recipe}[2]{
     \addsec[#1]{{\huge #1}\\\qquad #2}\index{#1}
     \begin{minipage}[t]{0.3\textwidth}
@@ -63,10 +84,15 @@
   }
 %
 % -----------------------------------------------------------------------------
-%  Formatierungen
+%  Formating
 %
+% font for chapter
 \addtokomafont{chapter}{\fontfamily{iwona}\color{Mahogany}\Huge}
+
+% font for section
 \addtokomafont{section}{\fontfamily{iwona}\selectfont\color{Mahogany}}
+
+% header / footer setup
 \pagestyle{scrheadings}
   \ohead[]{\leftmark}
   \addtokomafont{pagenumber}{\color{Mahogany}}
