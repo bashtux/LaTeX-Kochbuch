@@ -23,8 +23,8 @@
     colorlinks,
     hyperindex,
     encap,
-    urlcolor=BlueViolet,
-    linkcolor=BlueViolet]{hyperref}
+    urlcolor=OliveGreen,
+    linkcolor=OliveGreen]{hyperref}
 %
 % -----------------------------------------------------------------------------
 %  New commands
@@ -44,11 +44,11 @@
 % ingredients list environment
 	% \inglist 								--> Zutaten:
 	% \inglist[Ingredients:]	--> Ingredients:
-  \newcommand{\inglist}[1][Zutaten:]{\textbf{\textcolor{Mahogany}{ #1}}\\}
+  \newcommand{\inglist}[1][Zutaten:]{\textbf{\textcolor{IngredientColor}{ #1}}\\}
 
 % print index always after cleardoublepage
   \newcommand{\showindex}{
-    ~\cleardoublepage
+%    ~\cleardoublepage
     \printindex
   }
 
@@ -86,17 +86,24 @@
 % -----------------------------------------------------------------------------
 %  Formating
 %
+
 % font for chapter
-\addtokomafont{chapter}{\fontfamily{iwona}\color{Mahogany}\Huge}
+	% uncomment first line to change font too
+%\addtokomafont{chapter}{\fontfamily{iwona}\color{ChapterColor}\Huge}
+\addtokomafont{chapter}{\color{ChapterColor}\Huge}
 
 % font for section
-\addtokomafont{section}{\fontfamily{iwona}\selectfont\color{Mahogany}}
+%\addtokomafont{section}{\fontfamily{iwona}\selectfont\color{RecipeColor}}
+\addtokomafont{section}{\selectfont\color{RecipeColor}}
 
 % header / footer setup
 \pagestyle{scrheadings}
-  \ohead[]{\leftmark}
-  \addtokomafont{pagenumber}{\color{Mahogany}}
-  \addtokomafont{pageheadfoot}{\color{Mahogany}}
+	\clearscrheadfoot	
+	% set color for choosen elements
+	\addtokomafont{pagenumber}{\color{PageNumberColor}}
+  \addtokomafont{pageheadfoot}{\color{PageHeadFootColor}}
+	\rohead[]{\leftmark~:~\pagemark}
+	\rehead[]{\leftmark~:~\pagemark}
   \automark[]{chapter}
 \makeindex
 %

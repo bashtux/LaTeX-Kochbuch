@@ -8,13 +8,40 @@
 %  Kochbuch - Moppels Rezeptsammlung                          % vim:sw=2:ts=2
 % -----------------------------------------------------------------------------
 %
+% general document setup
 \documentclass[fontsize=11pt, paper=a4, toc=index, DIV=12, BCOR=10mm]{scrbook}
   \usepackage{kochbuch}
   \hypersetup{
     pdftitle={Moppels Rezeptsammlung},
-    pdfauthor={Lutz Moppert},
     pdfsubject={Inspiriert von verschiedenen Sterneköchen},
+    pdfauthor={Lutz Moppert},
+    pdfkeywords = {Stichwort1, Stichwort2 ...} ,
+    pdfcreator  = {pdflatex},
     }
+%
+% -----------------------------------------------------------------------------
+%  Document colors
+%
+% Colors for title page
+\colorlet{SubjectColor}{LimeGreen}
+\colorlet{TitleColor}{LimeGreen}
+\colorlet{SubtitleColor}{LimeGreen}
+\colorlet{AuthorColor}{LimeGreen}
+\colorlet{DateColor}{LimeGreen}
+
+% Color for Recipes
+\colorlet{ChapterColor}{OliveGreen}
+\colorlet{RecipeColor}{OliveGreen}
+\colorlet{IngredientColor}{OliveGreen}
+
+% Layout Colors
+\colorlet{PageNumberColor}{MidnightBlue}
+\colorlet{PageHeadFootColor}{MidnightBlue}
+\colorlet{IndexHeadingColor}{MidnightBlue}
+
+% Set general font for document
+\usepackage[sfdefault,light]{roboto}
+
 %
 %  Ende der Preambel
 % -----------------------------------------------------------------------------
@@ -24,12 +51,13 @@
 % -----------------------------------------------------------------------------
 %  Titelseite
 %
-%\titlehead{}
-\subject{\textcolor{Mahogany}{Gute Küche ganz einfach}}
-\title{\textcolor{Mahogany}{Moppels Rezeptsammlung}}
-\subtitle{\textcolor{Mahogany}{Inspiriert von verschiedenen (Sterne"~)""köchen}}
-\author{\textcolor{Mahogany}{Lutz Moppert}}
-\date{}
+\frontmatter
+
+\subject{\textcolor{SubjectColor}{Gute Küche ganz einfach}}
+\title{\textcolor{TitleColor}{Moppels Rezeptsammlung}}
+\subtitle{\textcolor{SubtitleColor}{Inspiriert von verschiedenen (Sterne"~)""köchen}}
+\author{\textcolor{AuthorColor}{Lutz Moppert}}
+\date{\textcolor{DateColor}{\today}}  % remove \today for no date
 %\publishers{}
 %\and
 \dedication{Gewidmet meiner geliebten Frau Uta und unseren fröhlichen Kindern
@@ -37,11 +65,14 @@
   meist genossen haben.}
 \maketitle
 \newpage
+
+% Table of contents
 \tableofcontents
 %
 % -----------------------------------------------------------------------------
 %  Kapitel
 %
+\mainmatter
 \category[Bilder/Gericht.jpg]{Gerichte}
 
 \category[Bilder/Grundlage.jpg]{Grundlagen}
