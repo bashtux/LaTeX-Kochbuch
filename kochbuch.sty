@@ -6,16 +6,26 @@
 %
   \usepackage{cmap}
   \usepackage[ngerman]{babel}
-%  \usepackage[utf8]{inputenc}		% obsolete since 2018
   \usepackage[T1]{fontenc}
 	\usepackage{sanitize-umlaut}		% sorts ä,ö,ü in index under a,o,u
 	\usepackage{lmodern}						% mor modern font set
   \usepackage[dvipsnames]{xcolor}	% extended color names
-  \usepackage{scrlayer-scrpage}		% KOMA header and footer	
   \usepackage{graphicx}						% image package
   \usepackage{nicefrac}						% nice fractions
 																	% TODO: update to xfrac
   \usepackage{makeidx}						% create indexes
+
+	\usepackage{geometry}
+		\geometry{
+			left	= 2.5cm,
+			right	= 2cm,
+			top		= 3cm,
+			bottom= 2cm}
+
+	\usepackage{titlesec}						% chapter/section customisation
+
+	\usepackage{lettrine}						% Drop cap
+
   \usepackage[										% creates links for index
     pdfpagelayout=TwoPageRight,
     pdfcreator=PDFLaTeX,
@@ -25,6 +35,31 @@
     encap,
     urlcolor=OliveGreen,
     linkcolor=OliveGreen]{hyperref}
+
+%
+% -----------------------------------------------------------------------------
+%  Formating
+%
+% Formating \chapter{}
+	\titleformat{\chapter}[display]
+		{\color{ChapterColor}\normalfont\Huge\bfseries}
+		{\color{ChapterColor}\chaptertitlename~\thechapter}{1em}{}
+
+% Formating \section{}
+	\titleformat{\section}
+		{\color{RecipeColor}\normalfont\huge\bfseries}
+		{\color{RecipeColor}\thesection}{1em}{}
+
+%
+% -----------------------------------------------------------------------------
+%  Header / Footer
+%
+	\newpagestyle{main}{
+		\sethead[][][\chaptertitle]{}{}{\chaptertitle}
+		\setfoot[][\thepage][]{}{\thepage}{}
+	}
+	\pagestyle{main}
+
 %
 % -----------------------------------------------------------------------------
 %  New commands
@@ -54,57 +89,39 @@
 
 % create Chapter w/o numbering add default picture if not specified
   \newcommand{\category}[2][Bilder/Leer.jpg]{%
-    \addchap{#2}
+    \chapter{#2}
     \includegraphics[width=\textwidth]{#1}
     \newpage
   }
 
 % defining step command for cooking instructions
-  \newcommand{\steps}{
+	\newcommand{\steps}{
     \end{minipage}
     \hspace*{0.6cm}
-    \begin{minipage}[t]{0.6\textwidth}
-      \setlength{\parskip}{2ex plus1ex minus0.5ex}
+    \begin{minipage}[t]{0.6\textwidth}		% width of text body
+				\setlength{\parskip}{.25em}
   }
 
 % ingredient entry
 	% TODO: implement cooking units
-  \DeclareRobustCommand*{\ingredient}[1]{ #1\\}
+%  \DeclareRobustCommand*{\ingredient}[1]{ #1\\}
+	\newcommand{\ingredient}[1]{ #1\\}
 
 % environment for recipe add unnumbered titel as section
 	% sample usage
 	% \begin{recipe}{Recipe title}{recipe author}
   \newenvironment{recipe}[2]{
-    \addsec[#1]{{\huge #1}\\\qquad #2}\index{#1}
-    \begin{minipage}[t]{0.3\textwidth}
+
+		% create title and recipe author, insert recipe to index
+		\section*{{\huge #1}\\\qquad \large #2}\index{#1} 
+		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
+    \begin{minipage}[t]{0.3\textwidth}		% width of ingredients
     \small
   }{
-    \end{minipage}
+			\end{minipage}
     ~\\[.5 cm]
   }
-%
-% -----------------------------------------------------------------------------
-%  Formating
-%
 
-% font for chapter
-	% uncomment first line to change font too
-%\addtokomafont{chapter}{\fontfamily{iwona}\color{ChapterColor}\Huge}
-\addtokomafont{chapter}{\color{ChapterColor}\Huge}
-
-% font for section
-%\addtokomafont{section}{\fontfamily{iwona}\selectfont\color{RecipeColor}}
-\addtokomafont{section}{\selectfont\color{RecipeColor}}
-
-% header / footer setup
-\pagestyle{scrheadings}
-	\clearscrheadfoot	
-	% set color for choosen elements
-	\addtokomafont{pagenumber}{\color{PageNumberColor}}
-  \addtokomafont{pageheadfoot}{\color{PageHeadFootColor}}
-	\rohead[]{\leftmark~:~\pagemark}
-	\rehead[]{\leftmark~:~\pagemark}
-  \automark[]{chapter}
 \makeindex
 %
 % -----------------------------------------------------------------------------

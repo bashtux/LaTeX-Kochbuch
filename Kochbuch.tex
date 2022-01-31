@@ -9,7 +9,11 @@
 % -----------------------------------------------------------------------------
 %
 % general document setup
-\documentclass[fontsize=11pt, paper=a4, toc=index, DIV=12, BCOR=10mm]{scrbook}
+\documentclass[
+	12pt,
+	a4paper,
+	titlepage,
+	oneside]{book}
   \usepackage{kochbuch}
   \hypersetup{
     pdftitle={Moppels Rezeptsammlung},
@@ -33,6 +37,7 @@
 \colorlet{ChapterColor}{OliveGreen}
 \colorlet{RecipeColor}{OliveGreen}
 \colorlet{IngredientColor}{OliveGreen}
+\colorlet{LetterColor}{OliveGreen}
 
 % Layout Colors
 \colorlet{PageNumberColor}{MidnightBlue}
@@ -52,18 +57,23 @@
 %  Titelseite
 %
 \frontmatter
+\begin{titlepage}
+\begin{center}
+  \vspace*{4cm}
+  \Huge{\textbf{Cooking}} \\[15pt]
+  \LARGE{How to do it, and survive} \\
+ % ----------------------------------------------------------------
+  \vspace{1.5cm}
+  \large{Author}\\[5pt]
+  \Large{\textbf{Author Name}} \\
+  \vfill
+ % ----------------------------------------------------------------
+  \includegraphics[width=0.35\textwidth]{Bilder/title.jpg}\\[5pt]
+  \vspace{1cm}
+  {January 2022}
+\end{center}
+\end{titlepage}
 
-\subject{\textcolor{SubjectColor}{Gute Küche ganz einfach}}
-\title{\textcolor{TitleColor}{Moppels Rezeptsammlung}}
-\subtitle{\textcolor{SubtitleColor}{Inspiriert von verschiedenen (Sterne"~)""köchen}}
-\author{\textcolor{AuthorColor}{Lutz Moppert}}
-\date{\textcolor{DateColor}{\today}}  % remove \today for no date
-%\publishers{}
-%\and
-\dedication{Gewidmet meiner geliebten Frau Uta und unseren fröhlichen Kindern
-  Line und Tim, die alle Rezepte probiert und manchmal gelitten, es jedoch
-  meist genossen haben.}
-\maketitle
 \newpage
 
 % Table of contents
@@ -73,6 +83,7 @@
 %  Kapitel
 %
 \mainmatter
+
 \category[Bilder/Gericht.jpg]{Gerichte}
 
 \category[Bilder/Grundlage.jpg]{Grundlagen}
