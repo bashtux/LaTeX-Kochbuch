@@ -245,7 +245,5 @@
   \newpage
   \input{Gebaeck/Spritzgebaeck_Uta}
   \input{Gebaeck/Spritzgebaeck}
-
-\backmatter
-\showindex
+\showindex[intoc]
 \end{document}

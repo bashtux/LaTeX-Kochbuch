@@ -6,6 +6,7 @@
 %
   \usepackage{cmap}
   \usepackage[ngerman]{babel}
+%  \usepackage[utf8]{inputenc}		% obsolete since 2018
   \usepackage[T1]{fontenc}
 	\usepackage{sanitize-umlaut}		% sorts ä,ö,ü in index under a,o,u
 	\usepackage{lmodern}						% mor modern font set
@@ -98,9 +99,13 @@
 	\newcommand{\steps}{
     \end{minipage}
     \hspace*{0.6cm}
-    \begin{minipage}[t]{0.6\textwidth}		% width of text body
+    \begin{minipage}[t]{0.75\textwidth}		% width of text body
 				\setlength{\parskip}{.25em}
   }
+
+	% step command to define single cooking steps 
+	\newcommand{\step}[1]{\lettrine[lines=2,lhang=0.33,lraise=0.35]{\textcolor{LetterColor}{\thestepcount}}{~}{#1}\\	\stepcounter{stepcount}}
+
 
 % ingredient entry
 	% TODO: implement cooking units
@@ -110,18 +115,26 @@
 % environment for recipe add unnumbered titel as section
 	% sample usage
 	% \begin{recipe}{Recipe title}{recipe author}
+	\newcounter{stepcount}			% Counter for steps
+
   \newenvironment{recipe}[2]{
+	\setcounter{stepcount}{1}		% Reset counter for steps
 
 		% create title and recipe author, insert recipe to index
 		\section*{{\huge #1}\\\qquad \large #2}\index{#1} 
 		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
-    \begin{minipage}[t]{0.3\textwidth}		% width of ingredients
+    \begin{minipage}[t]{0.23\textwidth}		% width of ingredients
+		\raggedright													% avoid justyfied in ingredient list
     \small
   }{
 			\end{minipage}
     ~\\[.5 cm]
   }
 
+% Print index
+	% TODO: include in TOC
 \makeindex
+
+
 %
 % -----------------------------------------------------------------------------
