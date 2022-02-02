@@ -1,0 +1,97 @@
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+%
+% -----------------------------------------------------------------------------
+%  Kochbuch - Moppels Rezeptsammlung                          % vim:sw=2:ts=2
+% -----------------------------------------------------------------------------
+%
+% general document setup
+\documentclass[
+	12pt,
+	a4paper,
+	titlepage,
+	oneside]{book}
+  \usepackage{kochbuch}
+  \hypersetup{
+    pdftitle={Moppels Rezeptsammlung},
+    pdfsubject={Inspiriert von verschiedenen Sterneköchen},
+    pdfauthor={Lutz Moppert},
+    pdfkeywords = {Stichwort1, Stichwort2 ...} ,
+    pdfcreator  = {pdflatex},
+    }
+%
+% -----------------------------------------------------------------------------
+%  Document colors
+%
+% Colors for title page
+\colorlet{SubjectColor}{LimeGreen}
+\colorlet{TitleColor}{LimeGreen}
+\colorlet{SubtitleColor}{LimeGreen}
+\colorlet{AuthorColor}{LimeGreen}
+\colorlet{DateColor}{LimeGreen}
+
+% Color for Recipes
+\colorlet{ChapterColor}{OliveGreen}
+\colorlet{RecipeColor}{OliveGreen}
+\colorlet{IngredientColor}{OliveGreen}
+\colorlet{LetterColor}{OliveGreen}
+
+% Layout Colors
+\colorlet{PageNumberColor}{MidnightBlue}
+\colorlet{PageHeadFootColor}{MidnightBlue}
+\colorlet{IndexHeadingColor}{MidnightBlue}
+
+% Set general font for document
+\usepackage[sfdefault,light]{roboto}
+
+%
+%  Ende der Preambel
+% -----------------------------------------------------------------------------
+%
+\begin{document}
+%
+% -----------------------------------------------------------------------------
+%  Titelseite
+%
+\frontmatter
+\begin{titlepage}
+\begin{center}
+  \vspace*{4cm}
+  \Huge{\textbf{Cooking}} \\[15pt]
+  \LARGE{How to do it, and survive} \\
+ % ----------------------------------------------------------------
+  \vspace{1.5cm}
+  \large{Author}\\[5pt]
+  \Large{\textbf{Author Name}} \\
+  \vfill
+ % ----------------------------------------------------------------
+  \includegraphics[width=0.35\textwidth]{Bilder/title.jpg}\\[5pt]
+  \vspace{1cm}
+  {January 2022}
+\end{center}
+\end{titlepage}
+
+\newpage
+
+% Table of contents
+\tableofcontents
+%
+% -----------------------------------------------------------------------------
+%  Kapitel
+%
+\mainmatter
+
+\part{Gerichte}
+\includegraphics{Bilder/example.png}
+
+\category[Bilder/example.png]{Vorspeisen \& Kleine Gerichte}
+  \input{Example/Pizza}
+  \newpage
+  \input{Example/Schiacciata}
+
+\backmatter
+\showindex
+\end{document}
