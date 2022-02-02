@@ -99,7 +99,7 @@
 	\newcommand{\steps}{
     \end{minipage}
     \hspace*{0.6cm}
-    \begin{minipage}[t]{0.75\textwidth}		% width of text body
+    \begin{minipage}[t]{0.7\textwidth}		% width of text body
 				\setlength{\parskip}{.25em}
   }
 
@@ -109,8 +109,8 @@
 
 % ingredient entry
 	% TODO: implement cooking units
-%  \DeclareRobustCommand*{\ingredient}[1]{ #1\\}
-	\newcommand{\ingredient}[1]{ #1\\}
+	% \ingredientt{<Amount>}{<Unit>}{<Ingredient>}
+	\newcommand{\ingredient}[3]{\makebox[0.8cm][r]{#1}\,\makebox[0.8cm][l]{#2}\,\parbox[t]{2.5cm}{#3}\\} 
 
 % environment for recipe add unnumbered titel as section
 	% sample usage
@@ -123,7 +123,7 @@
 		% create title and recipe author, insert recipe to index
 		\section*{{\huge #1}\\\qquad \large #2}\index{#1} 
 		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
-    \begin{minipage}[t]{0.23\textwidth}		% width of ingredients
+    \begin{minipage}[t]{0.28\textwidth}		% width of ingredients
 		\raggedright													% avoid justyfied in ingredient list
     \small
   }{
