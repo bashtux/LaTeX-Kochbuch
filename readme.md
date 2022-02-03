@@ -34,5 +34,3 @@ This should create a file called *RecipeCollection.pdf*
 ## implemented features
 
 - [x] setup of a nice part layout e.g. for menus, general information 
-https://github.com/bashtux/LaTeX-Kochbuch/commit/5c2794a66b775ab27854be427afe46cd5716bf91
-
