@@ -23,9 +23,14 @@ pdflatex kochbuch.tex
 This should create a file called *RecipeCollection.pdf*
 
 ## Feature ideas
-- implementation of https://ctan.org/pkg/cooking-units?lang=de
-- setup of a nice part layout e.g. for menus, general information, ...
-- implementing portions and time variable
-- intorduction of cooking symbols for baking, time, portions
-- easier handling of folder management for categories, setting folders for whole categories
+- [] implementation of https://ctan.org/pkg/cooking-units?lang=de
+- [] implementing portions and time variable
+- [] intorduction of cooking symbols for baking, time, portions
+- [] easier handling of folder management for categories, setting folders for whole categories
+- [] individual pictures for recipes
+- [] source for recipes including web link
+- [] some sort of marked box for tips and hints
 
+## implemented features
+
+- [x] setup of a nice part layout e.g. for menus, general information

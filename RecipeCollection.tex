@@ -27,13 +27,14 @@
 %  Document colors
 %
 % Colors for title page
-\colorlet{SubjectColor}{LimeGreen}
-\colorlet{TitleColor}{LimeGreen}
-\colorlet{SubtitleColor}{LimeGreen}
-\colorlet{AuthorColor}{LimeGreen}
-\colorlet{DateColor}{LimeGreen}
+\colorlet{SubjectColor}{ForestGreen}
+\colorlet{TitleColor}{ForestGreen}
+\colorlet{SubtitleColor}{ForestGreen}
+\colorlet{AuthorColor}{ForestGreen}
+\colorlet{DateColor}{ForestGreen}
 
 % Color for Recipes
+\colorlet{PartColor}{NavyBlue}
 \colorlet{ChapterColor}{OliveGreen}
 \colorlet{RecipeColor}{OliveGreen}
 \colorlet{IngredientColor}{OliveGreen}
@@ -59,18 +60,18 @@
 \frontmatter
 \begin{titlepage}
 \begin{center}
-  \vspace*{4cm}
-  \Huge{\textbf{Cooking}} \\[15pt]
-  \LARGE{How to do it, and survive} \\
+	\vspace*{4cm}
+	\Huge{\textbf{\textcolor{TitleColor}{Cooking}}} \\[15pt]
+	\LARGE{\textcolor{SubjectColor}{How to do it, and survive}} \\
+% ----------------------------------------------------------------
+	\vspace{1.5cm}
+	\large{\textcolor{AuthorColor}{Author}}\\[5pt]
+	\Large{\textbf{\textcolor{AuthorColor}{Author Name}}} \\
+	\vfill
  % ----------------------------------------------------------------
-  \vspace{1.5cm}
-  \large{Author}\\[5pt]
-  \Large{\textbf{Author Name}} \\
-  \vfill
- % ----------------------------------------------------------------
-  \includegraphics[width=0.35\textwidth]{images/title.jpg}\\[5pt]
-  \vspace{1cm}
-  {January 2022}
+	\includegraphics[width=0.35\textwidth]{images/title.jpg}\\[5pt]
+	\vspace{1cm}
+	{\textcolor{DateColor}{January 2022}}
 \end{center}
 \end{titlepage}
 
@@ -80,9 +81,11 @@
 \tableofcontents
 %
 % -----------------------------------------------------------------------------
-%  Kapitel
+%  Main part
 %
 \mainmatter
+
+\part{Gerichte}
 
 \category[images/example.png]{Vorspeisen \& Kleine Gerichte}
   \input{example/Pizza}

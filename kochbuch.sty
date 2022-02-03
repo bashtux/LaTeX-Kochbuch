@@ -41,10 +41,15 @@
 % -----------------------------------------------------------------------------
 %  Formating
 %
+% Formating \part{}
+	\titleformat{\part}[display]
+		{\color{PartColor}\fontsize{40}{48}\normalfont\bfseries\centering}
+		{\color{PartColor}\Huge\partname~\thepart}{1em}{}
+
 % Formating \chapter{}
 	\titleformat{\chapter}[display]
-		{\color{ChapterColor}\normalfont\Huge\bfseries}
-		{\color{ChapterColor}\chaptertitlename~\thechapter}{1em}{}
+		{\color{ChapterColor}\normalfont\LARGE\bfseries}
+		{\color{ChapterColor}\Large\chaptertitlename~\thechapter}{0.5em}{}
 
 % Formating \section{}
 	\titleformat{\section}
@@ -90,7 +95,7 @@
 
 % create Chapter w/o numbering add default picture if not specified
   \newcommand{\category}[2][Bilder/Leer.jpg]{%
-    \chapter{#2}
+		\chapter{#2}
     \includegraphics[width=\textwidth]{#1}
     \newpage
   }
