@@ -30,6 +30,10 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] individual pictures for recipes
 - [ ] source for recipes including web link
 - [ ] some sort of marked box for tips and hints
+- [ ] Template for informational pages (cooking tables, portion size, etc.)
+- [ ] MAKEFILE for corect compilattion
+- [ ] nicer Header/Footer with colours
+- [ ] make \index{A>B} work better (no duplicates)
 
 ## implemented features
 
