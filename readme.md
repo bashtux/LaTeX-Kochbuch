@@ -24,8 +24,6 @@ This should create a file called *RecipeCollection.pdf*
 
 ## Feature ideas
 - [ ] implementation of https://ctan.org/pkg/cooking-units?lang=de
-- [ ] implementing portions and time variable
-- [ ] intorduction of cooking symbols for baking, time, portions
 - [ ] easier handling of folder management for categories, setting folders for whole categories
 - [ ] individual pictures for recipes
 - [ ] source for recipes including web link
@@ -34,7 +32,13 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] MAKEFILE for corect compilattion
 - [ ] nicer Header/Footer with colours
 - [ ] make \index{A>B} work better (no duplicates)
+- [ ] interactive recipe insertion (python)
+- [ ] automatic alphabetic sorting for pre makefile (python)
+- [ ] implement language for template
+- [ ] multiple dietary restrictions possible
 
 ## implemented features
 
 - [x] setup of a nice part layout e.g. for menus, general information 
+- [x] implementing portions and time variable
+- [x] intorduction of cooking symbols for baking, time, portions

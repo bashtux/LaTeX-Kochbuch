@@ -23,6 +23,8 @@
 			top		= 3cm,
 			bottom= 2cm}
 
+\usepackage{multirow}
+
 	\usepackage{titlesec}						% chapter/section customisation
 
 	\usepackage{lettrine}						% Drop cap
@@ -68,7 +70,7 @@
 
 %
 % -----------------------------------------------------------------------------
-%  New commands
+%  New commands main document
 %
 % Easy fractions
   \newcommand{\halb}{\nicefrac{1}{2}~}
@@ -82,10 +84,6 @@
 	% TODO: implement cooking symobls / cooking units
   \newcommand{\celsius}{$^\circ$C~}
 
-% ingredients list environment
-	% \inglist 								--> Zutaten:
-	% \inglist[Ingredients:]	--> Ingredients:
-  \newcommand{\inglist}[1][Zutaten:]{\textbf{\textcolor{IngredientColor}{ #1}}\\}
 
 % print index always after cleardoublepage
   \newcommand{\showindex}{
@@ -100,45 +98,84 @@
     \newpage
   }
 
+% Print index
+	% TODO: include in TOC
+\makeindex
+
+
+%
+% ------------------------------------------------------------------------------
+%		New commands recipe documents
+%
+
+% environment for recipe add unnumbered titel as section
+  % sample usage
+	% \begin{tutel}{Recipe title}{recipe author}
+\newcommand{\tutel}[2]{		% create title and recipe author, insert recipe to index
+		\section*{{\huge #1}\\
+		\qquad \normalsize #2}\index{#1} 
+		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
+}
+
+% environment for recipe add unnumbered titel as section
+	% sample usage
+% \begin{recipe}{P}{2}{30}{90}{oven}{vegan}{S3}
+	%              |  |   |  |    |      |    |
+	%              |  |   |  |    |      |    |> spice level S1-S4, - for none
+  %              |  |   |  |    |      |> dietary restricions vegan, vegetarian
+	%              |  |   |  |    |> ccoking method: oven,
+	%              |  |   |  |> total time needed for recipe (active & passiv) [min]
+	%              |  |   |> active time for recipe [min]
+	%              |  |> serving count
+  %							 |> portion quantifier: P (person), S (pieces)
+
+	\newcounter{stepcount}			% Counter for steps
+
+	\newenvironment{recipe}[7]{
+	\setcounter{stepcount}{1}		% Reset counter for steps
+
+  % differenciate portion quantifier
+		\def\serving{P}
+		\def\inputparam{#1}
+		\def\quant{\ifx\serving\inputparam Pers. \else Stk. \fi}
+
+%		\begin{center}
+		\begin{tabular}{c |c |c |c}
+			\footnotesize{\textbf{\quant}} & \multicolumn{2}{c|}{\footnotesize{\textbf{Zeit}}} & \multirow{3}{*}{\includegraphics[height=25px]{images/#5} \includegraphics[height=25px]{images/#6} \includegraphics[height=25px]{images/#7}} \\
+			\multirow{2}{*}{#2} & #3 & #4 \\
+			& aktive & passiv \\
+  	\end{tabular} \\
+%%		\end{center}
+
+		\begin{minipage}[t]{0.28\textwidth}		% width of ingredients
+		\raggedright													% avoid justyfied in ingredient list
+    \small
+  }{
+		\end{minipage}
+    ~\\[.5 cm]
+  }
+
+% ingredients list environment
+	% \inglist 								--> Zutaten:
+	% \inglist[Ingredients:]	--> Ingredients:
+  \newcommand{\inglist}[1][Zutaten:]{\textbf{\textcolor{IngredientColor}{ #1}}\\}
+
+	% ingredient entry
+	% TODO: implement cooking units
+	% \ingredientt{<Amount>}{<Unit>}{<Ingredient>}
+	\newcommand{\ingredient}[3]{\makebox[0.8cm][r]{#1}\,\makebox[0.8cm][l]{#2}\,\parbox[t]{2.5cm}{#3}\\} 
+
+
 % defining step command for cooking instructions
 	\newcommand{\steps}{
     \end{minipage}
-    \hspace*{0.6cm}
+    \hspace*{.4cm}
     \begin{minipage}[t]{0.7\textwidth}		% width of text body
 				\setlength{\parskip}{.25em}
   }
 
 	% step command to define single cooking steps 
 	\newcommand{\step}[1]{\lettrine[lines=2,lhang=0.33,lraise=0.35]{\textcolor{LetterColor}{\thestepcount}}{~}{#1}\\	\stepcounter{stepcount}}
-
-
-% ingredient entry
-	% TODO: implement cooking units
-	% \ingredientt{<Amount>}{<Unit>}{<Ingredient>}
-	\newcommand{\ingredient}[3]{\makebox[0.8cm][r]{#1}\,\makebox[0.8cm][l]{#2}\,\parbox[t]{2.5cm}{#3}\\} 
-
-% environment for recipe add unnumbered titel as section
-	% sample usage
-	% \begin{recipe}{Recipe title}{recipe author}
-	\newcounter{stepcount}			% Counter for steps
-
-  \newenvironment{recipe}[2]{
-	\setcounter{stepcount}{1}		% Reset counter for steps
-
-		% create title and recipe author, insert recipe to index
-		\section*{{\huge #1}\\\qquad \large #2}\index{#1} 
-		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
-    \begin{minipage}[t]{0.28\textwidth}		% width of ingredients
-		\raggedright													% avoid justyfied in ingredient list
-    \small
-  }{
-			\end{minipage}
-    ~\\[.5 cm]
-  }
-
-% Print index
-	% TODO: include in TOC
-\makeindex
 
 
 %
