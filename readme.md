@@ -36,6 +36,7 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] automatic alphabetic sorting for pre makefile (python)
 - [ ] implement language for template
 - [ ] multiple dietary restrictions possible
+- [ ] interactive setup of new cookbok (author, title, folders,...)
 
 ## implemented features
 
