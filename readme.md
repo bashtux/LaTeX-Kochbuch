@@ -33,13 +33,15 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] nicer Header/Footer with colours
 - [ ] make \index{A>B} work better (no duplicates)
 - [ ] interactive recipe insertion (python)
-- [ ] automatic alphabetic sorting for pre makefile (python)
 - [ ] implement language for template
 - [ ] multiple dietary restrictions possible
 - [ ] interactive setup of new cookbok (author, title, folders,...)
+- [ ] sub TOC for each category
+
 
 ## implemented features
 
 - [x] setup of a nice part layout e.g. for menus, general information 
 - [x] implementing portions and time variable
 - [x] intorduction of cooking symbols for baking, time, portions
+- [x] automatic alphabetic sorting for pre makefile (python)
