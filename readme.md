@@ -36,7 +36,9 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] implement language for template
 - [ ] multiple dietary restrictions possible
 - [ ] interactive setup of new cookbok (author, title, folders,...)
-- [ ] sub TOC for each category
+- [ ] adapt color of TOC page number to style
+- [ ] make sub TOC multi column to keep on one page?
+
 
 
 ## implemented features
@@ -45,3 +47,4 @@ This should create a file called *RecipeCollection.pdf*
 - [x] implementing portions and time variable
 - [x] intorduction of cooking symbols for baking, time, portions
 - [x] automatic alphabetic sorting for pre makefile (python)
+- [x] sub TOC for each category

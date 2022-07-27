@@ -13,7 +13,9 @@
   \usepackage[dvipsnames]{xcolor}	% extended color names
   \usepackage{graphicx}						% image package
   \usepackage{nicefrac}						% nice fractions
-																	% TODO: update to xfrac
+																	% TODO: update to xfac
+
+	\usepackage{etoc}								% used for local TOC
   \usepackage{makeidx}						% create indexes
 
 	\usepackage{geometry}
@@ -95,7 +97,10 @@
   \newcommand{\category}[2][Bilder/Leer.jpg]{%
 		\chapter{#2}
     \includegraphics[width=\textwidth]{#1}
-    \newpage
+		% no title and newpage for local TOC
+		\etocsettocstyle{\bigskip\medskip}{\medskip\vfill}
+		\localtableofcontents
+		\newpage
   }
 
 % Print index
