@@ -47,18 +47,18 @@ def centerText(text):
     out = text.rjust(filler, " ")
     print(out)
 
-def writeLines(outFile, lineData):
-    with open(outFile, "a") as outF:
-        for line in lineData:
-            outF.write(line)
+#def writeLines(outFile, lineData):
+#    with open(outFile, "a") as outF:
+#        for line in lineData:
+#            outF.write(line)
 
-def replaceTags():
-    with open(r'test.tex', 'r') as file:
-        data = file.read()
-        data = data.replace('<+recipename+>', 'Pommes')
-
-    with open(r'out.tex', 'w') as file:
-        file.write(data)
+#def replaceTags():
+#    with open(r'test.tex', 'r') as file:
+#        data = file.read()
+#        data = data.replace('<+recipename+>', 'Pommes')
+#
+#    with open(r'out.tex', 'w') as file:
+#        file.write(data)
 
 def searchTags(templateFile):
     res = {}
@@ -76,6 +76,17 @@ def get_key(val, dict):
             return key
  
     return "key doesn't exist"
+
+#def validate(text, options):
+#    while True:
+#        inp = input(text)
+#        if (inp.upper() in (string for string in options)):
+#            i = options.index(inp.upper())
+ #           res = options[i]
+ #           break
+ #       else:
+ #           print("Enter a valid option")
+ #   return res
 
 # ---------------------------------------------------------------------------
 # Start interactive mode
@@ -163,7 +174,6 @@ print()
 while True:
     d = input("Choose a dietary restriction: ")
     if d.isdigit() and int(d) < len(dietary):
-        # .replace(" ", "").lower()
         ch = get_key(int(d), dietary)
         names["<+dietary+>"] = ch.replace(" ", "").lower()
         break
@@ -185,9 +195,76 @@ print(smallRule)
 # ---------------------------------------------------------------------------
 # Ingredient list generator
 
+listname = []
+ingredientlist = []
 
 
-pprint.pprint(names)
+while True:
+    s = input("Use single list (named ingredients)[S] or \n use multiple sub lists (induvidually named) [M] :")
+    if s.casefold() == 'S'.casefold():
+        s = 'S'
+        break
+    elif s.casefold() == 'M'.casefold():
+        s = 'M'
+        break
+    else:
+        print("Enter a valid option")
 
-exit()
+
+# Start single or multi list environment
+
+# Single list
+if s == 'S':
+    listname.append('Ingredients')
+    c = 'Y'
+    ingredientlist.append([])
+    while c == 'Y':
+        amnt = input("Amount: ")
+        unit = input("Unit: ")
+        name = input("Ingredient: ")
+        ingredientlist[0].append([amnt, unit, name])
+        next = input("Add another ingredient?")
+        if next == 'N':
+            break
+
+if s == 'M':
+    listName = 'C'
+    ingredientlist.append([])
+    cnt = 0
+    while listName == 'C':
+        c = 'Y'
+        listname.append(input("List name: "))
+        while c == 'Y':
+            amnt = input("Amount: ")
+            unit = input("Unit: ")
+            name = input("Ingredient: ")
+            ingredientlist[cnt].append([amnt, unit, name])
+            next = input("Add another ingredient?")
+            if next == 'N':
+                break
+        next = input("Add another list?")
+        if next == 'N':
+            break
+        cnt = cnt + 1
+        ingredientlist.append([])
+
+# ---------------------------------------------------------------------------
+# adding Steps to recipe
+
+
+
+
+
+
+#    pprint.pprint(listname)
+#    pprint.pprint(ingredientlist)
+
+#    print("\n\nList1")
+#    pprint.pprint(ingredientlist[0])
+#    print("\n\nList2")
+#    pprint.pprint(ingredientlist[1])
+
+    #pprint.pprint(names)
+
+    exit()
 
