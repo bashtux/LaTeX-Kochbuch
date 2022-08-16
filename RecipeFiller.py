@@ -77,16 +77,16 @@ def get_key(val, dict):
  
     return "key doesn't exist"
 
-#def validate(text, options):
-#    while True:
-#        inp = input(text)
-#        if (inp.upper() in (string for string in options)):
-#            i = options.index(inp.upper())
- #           res = options[i]
- #           break
- #       else:
- #           print("Enter a valid option")
- #   return res
+def validate(text, options):
+    while True:
+        inp = input(text)
+        if (inp.upper() in (string for string in options)):
+            i = options.index(inp.upper())
+            res = options[i]
+            break
+        else:
+            print("Enter a valid option")
+    return res
 
 # ---------------------------------------------------------------------------
 # Start interactive mode
@@ -108,16 +108,7 @@ names["<+subtitle+>"] = input("Enter subtitle for recipe: ")
 print(smallRule)
 
 #.......................................
-while True:
-    port = input("Define if the amount is Portions [P] or Pieces [S]: ")
-    if port.casefold() == 'P'.casefold():
-        names["<+portion+>"] = 'P'        
-        break
-    elif port.casefold() == 'S'.casefold():
-        names["<+portion+>"] = 'S'
-        break
-    else:
-        print("Enter a valid choice.")
+names["<+portion+>"] = validate("Define if the amount is Portions [P] or Pieces [S]: ", ['P', 'S'])
 print(smallRule)
 
 #.......................................
@@ -182,13 +173,8 @@ while True:
 print(smallRule)
 
 #.......................................
-while True:
-    s = input("Choose a spice level [0-4]: ")
-    if s.isdigit() and int(s) <= 4:
-        names["<+spicy+>"] = "S" + s
-        break
-    else:
-        print("Please enter a valid choice.")
+spice = validate("Choose a spice level [0-4]: ", ["1", "2", "3", "4"])
+names["<+spicy+>"] = "S" + spice
 print(smallRule)
 
 
@@ -198,18 +184,7 @@ print(smallRule)
 listname = []
 ingredientlist = []
 
-
-while True:
-    s = input("Use single list (named ingredients)[S] or \n use multiple sub lists (induvidually named) [M] :")
-    if s.casefold() == 'S'.casefold():
-        s = 'S'
-        break
-    elif s.casefold() == 'M'.casefold():
-        s = 'M'
-        break
-    else:
-        print("Enter a valid option")
-
+s = validate("Use single list (named ingredients)[S] or \n use multiple sub lists (induvidually named) [M] :", ['S', 'M'])
 
 # Start single or multi list environment
 
@@ -251,20 +226,25 @@ if s == 'M':
 # ---------------------------------------------------------------------------
 # adding Steps to recipe
 
+steps = []
+
+while True:
+    steps.append(input("Add step description:"))
+    if validate("Add another step? ", ['Y', 'N']) == 'N':
+        break
 
 
-
-
+#pprint.pprint(steps)
 
 #    pprint.pprint(listname)
 #    pprint.pprint(ingredientlist)
 
-#    print("\n\nList1")
-#    pprint.pprint(ingredientlist[0])
-#    print("\n\nList2")
-#    pprint.pprint(ingredientlist[1])
+#print("\n\nList1")
+#pprint.pprint(ingredientlist[0])
+#print("\n\nList2")
+#pprint.pprint(ingredientlist[1])
 
-    #pprint.pprint(names)
+pprint.pprint(names)
 
-    exit()
+exit()
 
