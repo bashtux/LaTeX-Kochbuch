@@ -14,6 +14,7 @@
 #import os
 import pprint
 import re
+import fileinput
 # ---------------------------------------------------------------------------
 
 templateFile = 'TemplateFiller.tex'
@@ -234,6 +235,55 @@ while True:
         break
 
 
+# ---------------------------------------------------------------------------
+# Create recipe template
+# ---------------------------------------------------------------------------
+del names["<+steps+>"]
+del names["<+ingredients+>"]
+
+recipename = names["<+recipename+>"].lower() + "_" + names["<+subtitle+>"]
+
+fin = open("test.tex", "rt")
+data = fin.read()
+
+# ---------------------------------------------------------------------------
+# write general data into file
+for word, replacement in names.items():
+    data = data.replace(word, replacement)
+
+# ---------------------------------------------------------------------------
+# write ingredient list data
+listNr = 0
+allIngredients = ""
+for n in listname:
+    allIngredients += "\t\inglist[" + n + "]\n"
+    cnt = 0
+    for m in ingredientlist[listNr]:
+        allIngredients += (
+                "\t\t\ingredient{" +
+                m[0] +
+                "}{" +
+                m[1] +
+                "}{" +
+                m[2] +
+                "}\n" )
+        cnt += 1
+    listNr += 1
+data = data.replace("<+ingredients+>", allIngredients)
+
+# ---------------------------------------------------------------------------
+# write steps to data
+allSteps = ""
+for n in steps:
+    allSteps += "\t\steps{" + n + "}\n"
+    print(n)
+data = data.replace("<+steps+>", allSteps)
+
+fin.close()
+fin = open(recipename + ".tex", "wt")
+fin.write(data)
+fin.close()
+
 #pprint.pprint(steps)
 
 #    pprint.pprint(listname)
@@ -244,7 +294,7 @@ while True:
 #print("\n\nList2")
 #pprint.pprint(ingredientlist[1])
 
-pprint.pprint(names)
+#pprint.pprint(names)
 
 exit()
 
