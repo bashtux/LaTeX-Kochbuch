@@ -199,7 +199,7 @@ if s == 'S':
         unit = input("Unit: ")
         name = input("Ingredient: ")
         ingredientlist[0].append([amnt, unit, name])
-        next = input("Add another ingredient?")
+        next = validate("Add another ingredient?", ["Y", "N"])
         if next == 'N':
             break
 
@@ -218,7 +218,7 @@ if s == 'M':
             next = input("Add another ingredient?")
             if next == 'N':
                 break
-        next = input("Add another list?")
+        next = validate("Add another list?", ["Y", "N"])
         if next == 'N':
             break
         cnt = cnt + 1
