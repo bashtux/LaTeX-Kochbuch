@@ -174,7 +174,7 @@ while True:
 print(smallRule)
 
 #.......................................
-spice = validate("Choose a spice level [0-4]: ", ["1", "2", "3", "4"])
+spice = validate("Choose a spice level [0-4]: ", ["0", "1", "2", "3", "4"])
 names["<+spicy+>"] = "S" + spice
 print(smallRule)
 
