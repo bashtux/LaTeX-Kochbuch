@@ -26,8 +26,8 @@ dietary = {
         'None'          : 0,
         'Vegetarian'    : 1,
         'Vegan'         : 2,
-        'Gluten free'   : 3,
-        'Lactose free'  : 4 
+        'Gluten frei'   : 3,
+        'Laktose frei'  : 4 
         }
 
 # ---------------------------------------------------------------------------
@@ -212,7 +212,7 @@ if s == 'M':
         listname.append(input("List name: "))
         while c == 'Y':
             amnt = input("Amount: ")
-            unit = input("Unit: ")
+            unit = input("Unit [4 char]: ")
             name = input("Ingredient: ")
             ingredientlist[cnt].append([amnt, unit, name])
             next = input("Add another ingredient?")
@@ -275,7 +275,7 @@ data = data.replace("<+ingredients+>", allIngredients)
 # write steps to data
 allSteps = ""
 for n in steps:
-    allSteps += "\t\steps{" + n + "}\n"
+    allSteps += "\t\step{" + n + "}\n"
     print(n)
 data = data.replace("<+steps+>", allSteps)
 
