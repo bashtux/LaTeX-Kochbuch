@@ -116,9 +116,9 @@
 % environment for recipe add unnumbered titel as section
   % sample usage
 	% \begin{tutel}{Recipe title}{recipe author}
-\newcommand{\tutel}[2]{		% create title and recipe author, insert recipe to index
+\newcommand{\tutel}[3]{		% create title and recipe author, insert recipe to index
 		\section*{{\huge #1}\\
-		\qquad \normalsize #2}\index{#1} 
+		\qquad \normalsize #2 \hfill{Quelle: #3}}\index{#1} 
 		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
 }
 
