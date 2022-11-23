@@ -109,6 +109,13 @@ names["<+subtitle+>"] = input("Enter subtitle for recipe: ")
 print(smallRule)
 
 #.......................................
+names["<+source+>"] = input("Enter source name: ")
+print(smallRule)
+
+#.......................................
+names["<+url+>"] = input("Enter URL of source if available: ")
+
+#.......................................
 names["<+portion+>"] = validate("Define if the amount is Portions [P] or Pieces [S]: ", ['P', 'S'])
 print(smallRule)
 

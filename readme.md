@@ -38,7 +38,8 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] interactive setup of new cookbok (author, title, folders,...)
 - [ ] adapt color of TOC page number to style
 - [ ] make sub TOC multi column to keep on one page?
-- [ ]	limit unit of amount to 4 chars
+- [ ] limit unit of amount to 4 chars
+- [ ] lead in text for recipes (story, history etc)
 
 
 

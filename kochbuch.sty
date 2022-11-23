@@ -20,9 +20,9 @@
 
 	\usepackage{geometry}
 		\geometry{
-			left	= 2.5cm,
+			left	= 2cm,
 			right	= 2cm,
-			top		= 3cm,
+			top		= 2.5cm,
 			bottom= 2cm}
 
 \usepackage{multirow}
@@ -115,10 +115,10 @@
 
 % environment for recipe add unnumbered titel as section
   % sample usage
-	% \begin{tutel}{Recipe title}{recipe author}
-\newcommand{\tutel}[3]{		% create title and recipe author, insert recipe to index
+% \tutel{Recipe title}{recipe author}{source}{url}
+\newcommand{\tutel}[4]{		% create title and recipe author, insert recipe to index
 		\section*{{\huge #1}\\
-		\qquad \normalsize #2 \hfill{Quelle: #3}}\index{#1} 
+		\qquad \normalsize #2 \hfill{Quelle: \href{#4}{#3}}}\index{#1} 
 		\addcontentsline{toc}{section}{#1}		% add unnumbered section to TOC
 }
 
@@ -152,7 +152,7 @@
   	\end{tabular} \\
 %%		\end{center}
 
-		\begin{minipage}[t]{0.28\textwidth}		% width of ingredients
+		\begin{minipage}[t]{0.3\textwidth}		% width of ingredients
 		\raggedright													% avoid justyfied in ingredient list
     \small
   }{
@@ -168,7 +168,7 @@
 	% ingredient entry
 	% TODO: implement cooking units
 	% \ingredientt{<Amount>}{<Unit>}{<Ingredient>}
-	\newcommand{\ingredient}[3]{\makebox[0.8cm][r]{#1}\,\makebox[0.8cm][l]{#2}\,\parbox[t]{2.5cm}{#3}\\} 
+	\newcommand{\ingredient}[3]{\makebox[0.8cm][r]{#1}\,\makebox[1.3cm][l]{#2}\,\parbox[t]{3cm}{#3}\\} 
 
 
 % defining step command for cooking instructions
