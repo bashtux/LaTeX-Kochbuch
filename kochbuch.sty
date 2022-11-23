@@ -182,6 +182,24 @@
 	% step command to define single cooking steps 
 	\newcommand{\step}[1]{\lettrine[lines=2,lhang=0.33,lraise=0.35]{\textcolor{LetterColor}{\thestepcount}}{~}{#1}\\	\stepcounter{stepcount}}
 
+% define tips command for tips and tricks section
+	\newcommand{\tipps}{
+		\end{minipage}
+		\hspace*{.4cm}
+		\begin{minipage}[t]{0.18\textwidth}
+			\begin{center}
+				\rotatebox{90}{\textcolor{LetterColor}{Tipps \& Tricks}}
+%				\textcolor{LetterColor}{Tipps \& Tricks}
+			\end{center}
+		\end{minipage}
+		\begin{minipage}[t]{0.8\textwidth}
+%			\setlength{\parskip}{.25em}
+		}
+
+  % tipp command for single tipp
+			\newcommand{\tipp}[2]{\textbf{#1}#2}
+
+
 
 %
 % -----------------------------------------------------------------------------
