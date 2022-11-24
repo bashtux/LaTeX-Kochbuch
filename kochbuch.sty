@@ -185,15 +185,12 @@
 % define tips command for tips and tricks section
 	\newcommand{\tipps}{
 		\end{minipage}
-		\hspace*{.4cm}
-		\begin{minipage}[t]{0.18\textwidth}
-			\begin{center}
-				\rotatebox{90}{\textcolor{LetterColor}{Tipps \& Tricks}}
-%				\textcolor{LetterColor}{Tipps \& Tricks}
-			\end{center}
-		\end{minipage}
-		\begin{minipage}[t]{0.8\textwidth}
-%			\setlength{\parskip}{.25em}
+		\vspace{2em}
+		\begin{minipage}{0.18\textwidth}
+	  		\flushleft\textcolor{LetterColor}{\textbf{\Large Tipps \&}} 
+				\flushright\textcolor{LetterColor}{\textbf{\Large Tricks}}
+		\end{minipage}\hfill
+		\begin{minipage}{0.8\textwidth}
 		}
 
   % tipp command for single tipp
