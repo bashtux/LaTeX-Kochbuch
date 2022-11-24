@@ -27,7 +27,6 @@ This should create a file called *RecipeCollection.pdf*
 - [ ] easier handling of folder management for categories, setting folders for whole categories
 - [ ] individual pictures for recipes
 - [ ] source for recipes including web link
-- [ ] some sort of marked box for tips and hints
 - [ ] Template for informational pages (cooking tables, portion size, etc.)
 - [ ] MAKEFILE for corect compilattion
 - [ ] nicer Header/Footer with colours
@@ -50,3 +49,4 @@ This should create a file called *RecipeCollection.pdf*
 - [x] intorduction of cooking symbols for baking, time, portions
 - [x] automatic alphabetic sorting for pre makefile (python)
 - [x] sub TOC for each category
+- [x] some sort of marked box for tips and hints
